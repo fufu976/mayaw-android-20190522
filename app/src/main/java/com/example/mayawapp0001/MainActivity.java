@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "onCreate", Toast.LENGTH_LONG).show();
         setContentView(R.layout.activity_main);
         findViews();
+        //Linear Layout 練習
+        //setContentView(R.layout.main_linear);
     }
 
     @Override
