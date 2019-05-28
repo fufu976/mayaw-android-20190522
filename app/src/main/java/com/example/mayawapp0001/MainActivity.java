@@ -74,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("HELP")
-                        .setMessage("BMI Calculator")
-                        .setPositiveButton("", null)
+                        .setTitle(getString(R.string.help))
+                        .setMessage(getString(R.string.bmi_info))
+                        .setPositiveButton(getString(R.string.ok), null)
                         .show();
             }
         });
@@ -90,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
         float bmi = weight / ( height * height );
         Log.d("BMI", String.valueOf(bmi));
         Toast.makeText( this, String.valueOf(bmi), Toast.LENGTH_LONG ).show();
-        result.setText("BMI is: " + bmi);
+        result.setText(getString(R.string.your_bmi_is) + bmi);
         new AlertDialog.Builder(this)
-                .setTitle("BMI")
-                .setMessage("Your BMI is: " + bmi)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setTitle(getString(R.string.bmi))
+                .setMessage(getString(R.string.your_bmi_is) + bmi)
+                .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         edWeight.setText("0");

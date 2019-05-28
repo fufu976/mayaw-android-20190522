@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">mayawApp0001</string>
+    <string name="help">HELP</string>
+    <string name="bmi_info">BMI Calculator</string>
+    <string name="ok">OK</string>
+    <string name="your_bmi_is">Your BMI is:</string>
+    <string name="bmi">BMI</string>
 </resources>
