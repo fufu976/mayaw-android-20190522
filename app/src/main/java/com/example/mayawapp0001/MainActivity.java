@@ -1,11 +1,14 @@
 package com.example.mayawapp0001;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText edWeight;
     private EditText edHeight;
     private Button bHelp;
+    private TextView result;
+    private Button help;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +69,17 @@ public class MainActivity extends AppCompatActivity {
         edWeight = findViewById(R.id.ed_weight);
         edHeight = findViewById(R.id.ed_height);
         bHelp = findViewById(R.id.b_help);
+        result = findViewById(R.id.result);
+        bHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("HELP")
+                        .setMessage("BMI Calculator")
+                        .setPositiveButton("", null)
+                        .show();
+            }
+        });
     }
 
     public void bmiCalculate(View v) {
@@ -74,5 +90,17 @@ public class MainActivity extends AppCompatActivity {
         float bmi = weight / ( height * height );
         Log.d("BMI", String.valueOf(bmi));
         Toast.makeText( this, String.valueOf(bmi), Toast.LENGTH_LONG ).show();
+        result.setText("BMI is: " + bmi);
+        new AlertDialog.Builder(this)
+                .setTitle("BMI")
+                .setMessage("Your BMI is: " + bmi)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        edWeight.setText("0");
+                        edHeight.setText("0");
+                    }
+                })
+                .show();
     }
 }
