@@ -1,6 +1,7 @@
 package com.example.mayawapp0001;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -91,16 +92,19 @@ public class MainActivity extends AppCompatActivity {
         Log.d("BMI", String.valueOf(bmi));
         Toast.makeText( this, String.valueOf(bmi), Toast.LENGTH_LONG ).show();
         result.setText(getString(R.string.your_bmi_is) + bmi);
-        new AlertDialog.Builder(this)
-                .setTitle(getString(R.string.bmi))
-                .setMessage(getString(R.string.your_bmi_is) + bmi)
-                .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        edWeight.setText("0");
-                        edHeight.setText("0");
-                    }
-                })
-                .show();
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("BMI", bmi);
+        startActivity(intent);
+//        new AlertDialog.Builder(this)
+//                .setTitle(getString(R.string.bmi))
+//                .setMessage(getString(R.string.your_bmi_is) + bmi)
+//                .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        edWeight.setText("0");
+//                        edHeight.setText("0");
+//                    }
+//                })
+//                .show();
     }
 }
